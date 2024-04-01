@@ -1,0 +1,89 @@
+* {
+  font-size: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+#menu img {
+  height: 25px;
+  width: 25px;
+}
+
+#banner {
+  height: 250px;
+  background-color: #ccfbf6;
+  text-align: center;
+  line-height: 250px;
+  font-size: 2rem;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 90%;
+  border: 1px solid #000;
+}
+
+.box {
+  margin-bottom: 20px;
+  border: 1px solid #000;
+}
+
+.wrapper .small-boxes .box {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+
+.wrapper .small-boxes .box img {
+  height: 50px;
+  width: 80px;
+}
+
+.wrapper .small-boxes .box p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.wrapper .big-boxes .box {
+  position: relative;
+  height: 300px;
+  background: no-repeat center url("landscape.jpg");
+  background-size: cover;
+}
+
+.wrapper .big-boxes .box p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #000;
+  background-color: rgba(250, 235, 215, 0.5);
+}
+
+.wrapper .big-boxes .box img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  opacity: 0.5;
+}
