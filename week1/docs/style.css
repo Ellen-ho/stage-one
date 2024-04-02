@@ -1,5 +1,40 @@
 * {
+  box-sizing: border-box;
+}
+
+html {
   font-size: 20px;
+}
+
+#vertical-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 56%;
+  padding-top: 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  z-index: 10;
+}
+
+#vertical-menu a {
+  line-height: 45px;
+  color: black;
+  text-decoration: none;
+}
+
+#vertical-menu .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
 }
 
 nav {
@@ -7,16 +42,36 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 30px;
+  margin: 10px 0;
 }
 
-#menu img {
-  height: 25px;
-  width: 25px;
+#horizon-menu {
+  display: none;
+}
+
+#horizon-menu a {
+  color: black;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+#horizon-menu a:last-child {
+  margin-right: 0;
+}
+
+#burger-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/burger-menu.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 #banner {
   height: 250px;
-  background-color: #ccfbf6;
+  background-color: #e0f2fe;
   text-align: center;
   line-height: 250px;
   font-size: 2rem;
@@ -34,22 +89,21 @@ nav {
   justify-content: center;
   align-items: stretch;
   width: 90%;
-  border: 1px solid #000;
 }
 
 .box {
   margin-bottom: 20px;
-  border: 1px solid #000;
 }
 
 .wrapper .small-boxes .box {
   display: flex;
   flex-direction: row;
   height: 50px;
+  background-color: #c3e4f4;
 }
 
 .wrapper .small-boxes .box img {
-  height: 50px;
+  height: 100%;
   width: 80px;
 }
 
@@ -63,8 +117,10 @@ nav {
 .wrapper .big-boxes .box {
   position: relative;
   height: 300px;
-  background: no-repeat center url("landscape.jpg");
+  background: url("./assets/landscape.jpg");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .wrapper .big-boxes .box p {
@@ -86,4 +142,98 @@ nav {
   height: 20px;
   width: 20px;
   opacity: 0.5;
+}
+
+.wrapper .big-boxes .box:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+  #burger-icon {
+    display: none;
+  }
+
+  #menu .horizon-menu {
+    display: flex;
+  }
+
+  .wrapper .small-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .small-boxes > .box:last-child {
+    flex-basis: 100%;
+  }
+
+  .wrapper .small-boxes > :not(.box:last-child) {
+    flex-basis: calc(50% - 10px);
+    margin-bottom: 0;
+  }
+
+  .wrapper .big-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .big-boxes .box {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  .wrapper .big-boxes > .box:nth-last-child(-n + 2) {
+    flex-basis: calc(50% - 20px);
+  }
+
+  .wrapper .big-boxes > :not(.box:nth-last-child(-n + 2)) {
+    flex-basis: calc(25% - 20px);
+  }
+}
+
+@media (min-width: 1200px) {
+  #burger-icon {
+    display: none;
+  }
+
+  #menu .horizon-menu {
+    display: flex;
+  }
+
+  .wrapper {
+    width: 1200px;
+  }
+  .wrapper .small-boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .small-boxes .box {
+    flex-grow: 1;
+  }
+
+  .wrapper .big-boxes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .wrapper .big-boxes .box {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  .wrapper .big-boxes > .box:nth-child(5n + 1) {
+    flex-basis: calc(33.33% - 20px);
+  }
+
+  .wrapper .big-boxes > :not(.box:nth-child(5n + 1)) {
+    flex-basis: calc(16.66% - 20px);
+  }
 }
