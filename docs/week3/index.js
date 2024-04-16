@@ -2,6 +2,7 @@ const verticalMenu = document.querySelector("#vertical-menu");
 const burgerIcon = document.querySelector("#burger-icon");
 const closeBtn = document.querySelector(".close-btn");
 const loadBtn = document.querySelector(".load-btn");
+const wrapper = document.querySelector(".wrapper");
 let dataAfterFetch = null;
 
 function fetchData() {
@@ -36,7 +37,8 @@ function renderSmallBoxesSpots(dataAfterFetch) {
 let bigBoxSpotStartIndex = 3;
 
 function renderBigBoxesSpots(dataAfterFetch) {
-  const bigBoxesContainer = document.querySelector(".big-boxes");
+  const bigBoxesContainer = document.createElement("div");
+  bigBoxesContainer.classList.add("big-boxes");
   const nextRoundBigBoxSpotIndex = bigBoxSpotStartIndex + 10;
   for (
     let i = bigBoxSpotStartIndex;
@@ -47,6 +49,7 @@ function renderBigBoxesSpots(dataAfterFetch) {
     const box = createSpotBox(spot, false);
     bigBoxesContainer.appendChild(box);
   }
+  wrapper.appendChild(bigBoxesContainer);
   bigBoxSpotStartIndex = nextRoundBigBoxSpotIndex;
 }
 
@@ -69,7 +72,7 @@ function createSpotBox(spot, isSmall) {
   const image = document.createElement("img");
   const imageUrl = findFirstHttpsUrl(spot.filelist);
   const imageUrlWithLowerCase = imageUrl.replace(/\.(jpeg|jpg)/gi, ".jpg");
-  console.log(imageUrlWithLowerCase);
+
   image.src = imageUrlWithLowerCase;
   image.alt = spot.stitle;
 
@@ -79,6 +82,7 @@ function createSpotBox(spot, isSmall) {
 
   const title = document.createElement("p");
   title.textContent = spot.stitle;
+  title.title = spot.stitle;
 
   box.appendChild(image);
   box.appendChild(title);
@@ -102,11 +106,15 @@ function addEventListeners() {
   });
 
   loadBtn.addEventListener("click", function () {
-    if (dataAfterFetch) {
+    if (
+      dataAfterFetch &&
+      dataAfterFetch.results.length >= bigBoxSpotStartIndex
+    ) {
       renderBigBoxesSpots(dataAfterFetch);
     }
     if (dataAfterFetch.results.length < bigBoxSpotStartIndex) {
       loadBtn.textContent = "No More Data";
+      loadBtn.style.cursor = "unset";
     }
   });
 }
