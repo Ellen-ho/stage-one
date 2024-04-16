@@ -1,0 +1,253 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+#vertical-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 56%;
+  padding-top: 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  z-index: 10;
+}
+
+#vertical-menu a {
+  line-height: 45px;
+  color: black;
+  text-decoration: none;
+}
+
+#vertical-menu .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  margin: 10px 0;
+}
+
+#horizon-menu {
+  display: none;
+}
+
+#horizon-menu a {
+  color: black;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+#horizon-menu a:last-child {
+  margin-right: 0;
+}
+
+#burger-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/burger-menu.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  background-color: #e0f2fe;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 90%;
+}
+
+.box {
+  margin-bottom: 20px;
+}
+
+.wrapper .small-boxes .box {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  background-color: #c3e4f4;
+}
+
+.wrapper .small-boxes .box img {
+  height: 100%;
+  width: 80px;
+}
+
+.wrapper .small-boxes .box p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wrapper .big-boxes .box {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper .big-boxes .box p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #000;
+  background-color: rgba(250, 235, 215, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wrapper .big-boxes .box img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 30px;
+  opacity: 0.5;
+}
+
+.wrapper .load-btn {
+  display: none;
+  align-self: center;
+  text-align: center;
+  width: auto;
+  min-width: 150px;
+  max-width: 200px;
+  height: 50px;
+  line-height: 50px;
+  background-color: rgb(247, 245, 245);
+  cursor: pointer;
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+  #burger-icon {
+    display: none;
+  }
+
+  #horizon-menu {
+    display: flex;
+  }
+
+  .wrapper .small-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .small-boxes > .box:last-child {
+    flex-basis: 100%;
+  }
+
+  .wrapper .small-boxes > :not(.box:last-child) {
+    flex-basis: calc(50% - 10px);
+    margin-bottom: 0;
+  }
+
+  .wrapper .big-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .big-boxes .box {
+    flex-grow: 1;
+  }
+
+  .wrapper .big-boxes > .box:nth-last-child(-n + 2) {
+    flex-basis: calc(50% - 20px);
+  }
+
+  .wrapper .big-boxes > :not(.box:nth-last-child(-n + 2)) {
+    flex-basis: calc(25% - 20px);
+  }
+}
+
+@media (min-width: 1200px) {
+  #burger-icon {
+    display: none;
+  }
+
+  #horizon-menu {
+    display: flex;
+  }
+
+  .wrapper {
+    width: 1200px;
+  }
+  .wrapper .small-boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .wrapper .small-boxes .box {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .wrapper .big-boxes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .wrapper .big-boxes .box {
+    flex-grow: 1;
+  }
+
+  .wrapper .big-boxes > .box:nth-child(5n + 1) {
+    flex-basis: calc(33% - 20px);
+  }
+
+  .wrapper .big-boxes > :not(.box:nth-child(5n + 1)) {
+    flex-basis: calc(16% - 20px);
+  }
+}
