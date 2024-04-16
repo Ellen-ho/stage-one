@@ -95,6 +95,12 @@ nav {
   width: 90%;
 }
 
+.wrapper .small-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .wrapper .small-boxes .box {
   display: flex;
   flex-direction: row;
@@ -115,6 +121,12 @@ nav {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.wrapper .big-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .wrapper .big-boxes .box {
@@ -189,6 +201,7 @@ nav {
 
   .wrapper .big-boxes {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
@@ -233,6 +246,7 @@ nav {
 
   .wrapper .big-boxes {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
