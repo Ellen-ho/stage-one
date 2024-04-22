@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入系統</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="fixed-top-navbar">
+        <div class="navbar-content">歡迎光臨，請輸入帳號密碼</div>
+    </nav>
+    <div id="content"> 
+        <div class="form-container">
+            <div class="form-title">登入系統</div>
+            <form id="signin-form" action="/signin" method="POST">
+                <div>
+                    <label for="username">帳號</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div>
+                    <label for="password">密碼</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div>
+                    <label for="checkbox">同意條款</label>
+                    <input type="checkbox" id="checkbox" name="checkbox" >
+                </div>
+                <div>
+                    <button type="submit">登入</button>
+                </div>
+            </form>  
+        </div>
+        <hr>
+        <div class="form-container">
+          <div class="form-title">計算正整數的平方</div>
+            <div id="caculate-container">
+                <div>
+                    <label for="inputint">正整數</label>
+                    <input type="text" id="inputint" name="inputint">
+                </div>
+                <div>
+                    <button id="calculate">計算</button>
+                </div>
+          </div>
+        </div> 
+    </div>     
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+  </body>
+</html>

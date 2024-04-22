@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入失敗</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="fixed-top-navbar">
+        <div class="navbar-content">失敗頁面</div>
+    </nav>
+    <div id="content"> 
+        <div>帳號、或密碼輸入錯誤:</div>
+        <div class="failure-message">{{message}}</div>
+    </div>
+ </body>
+</html>
