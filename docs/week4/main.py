@@ -49,7 +49,7 @@ async def error_page(request: Request, message: str = ""):
     return templates.TemplateResponse("error.html", {"request": request, "message": message})
 
 @app.get("/signout")
-async def logout(request: Request):
+async def signout(request: Request):
     request.session['SIGNED-IN'] = False
     return RedirectResponse(url="/", status_code=303)
 
