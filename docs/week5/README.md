@@ -35,8 +35,8 @@ INSERT INTO website.member (name, username, password, follower_count) VALUES ('D
 ```
 
 <figure>
-    <img src="./screenshots/task3-1.png" width="500" alt="Task 3-1">
     <figcaption>Task 3-1 Screenshot</figcaption>
+    <img src="./screenshots/task3-1.png" width="500" alt="Task 3-1">
 </figure>
 
 ```sql
@@ -44,8 +44,8 @@ SELECT * FROM website.member;
 ```
 
 <figure>
-    <img src="./screenshots/task3-2.png" width="500" alt="Task 3-2">
     <figcaption>Task 3-2 Screenshot</figcaption>
+    <img src="./screenshots/task3-2.png" width="500" alt="Task 3-2">
 </figure>
 
 ```sql
@@ -53,8 +53,8 @@ SELECT * FROM website.member ORDER BY time DESC;
 ```
 
 <figure>
-    <img src="./screenshots/task3-3.png" width="500" alt="Task 3-3">
     <figcaption>Task 3-3 Screenshot</figcaption>
+    <img src="./screenshots/task3-3.png" width="500" alt="Task 3-3">
 </figure>
 
 ```sql
@@ -62,8 +62,8 @@ SELECT * FROM website.member ORDER BY time DESC LIMIT 3 OFFSET 1;
 ```
 
 <figure>
-    <img src="./screenshots/task3-4.png" width="500" alt="Task 3-4">
     <figcaption>Task 3-4 Screenshot</figcaption>
+    <img src="./screenshots/task3-4.png" width="500" alt="Task 3-4">
 </figure>
 
 ```sql
@@ -71,8 +71,8 @@ SELECT * FROM website.member WHERE username = 'test';
 ```
 
 <figure>
-    <img src="./screenshots/task3-5.png" width="500" alt="Task 3-5">
     <figcaption>Task 3-5 Screenshot</figcaption>
+    <img src="./screenshots/task3-5.png" width="500" alt="Task 3-5">
 </figure>
 
 ```sql
@@ -80,8 +80,8 @@ SELECT * FROM website.member WHERE name LIKE '%es%';
 ```
 
 <figure>
-    <img src="./screenshots/task3-6.png" width="500" alt="Task 3-6">
     <figcaption>Task 3-6 Screenshot</figcaption>
+    <img src="./screenshots/task3-6.png" width="500" alt="Task 3-6">
 </figure>
 
 ```sql
@@ -89,8 +89,8 @@ SELECT * FROM website.member WHERE username = 'test' AND password = 'test';
 ```
 
 <figure>
-    <img src="./screenshots/task3-7.png" width="500" alt="Task 3-7">
     <figcaption>Task 3-7 Screenshot</figcaption>
+    <img src="./screenshots/task3-7.png" width="500" alt="Task 3-7">
 </figure>
 
 ```sql
@@ -100,8 +100,8 @@ SELECT * FROM website.member WHERE username = 'test';
 ```
 
 <figure>
-    <img src="./screenshots/task3-8.png" width="500" alt="Task 3-8">
     <figcaption>Task 3-8 Screenshot</figcaption>
+    <img src="./screenshots/task3-8.png" width="500" alt="Task 3-8">
 </figure>
 
 ### Task 4: SQL Aggregation Functions
@@ -111,8 +111,8 @@ SELECT COUNT(*) FROM website.member;
 ```
 
 <figure>
-    <img src="./screenshots/task4-1.png" width="500" alt="Task 4-1">
     <figcaption>Task 4-1 Screenshot</figcaption>
+    <img src="./screenshots/task4-1.png" width="500" alt="Task 4-1">
 </figure>
 
 ```sql
@@ -120,8 +120,8 @@ SELECT SUM(follower_count) FROM website.member;
 ```
 
 <figure>
-    <img src="./screenshots/task4-2.png" width="500" alt="Task 4-2">
     <figcaption>Task 4-2 Screenshot</figcaption>
+    <img src="./screenshots/task4-2.png" width="500" alt="Task 4-2">
 </figure>
 
 ```sql
@@ -129,8 +129,8 @@ SELECT AVG(follower_count) FROM website.member;
 ```
 
 <figure>
-    <img src="./screenshots/task4-3.png" width="500" alt="Task 4-3">
     <figcaption>Task 4-3 Screenshot</figcaption>
+    <img src="./screenshots/task4-3.png" width="500" alt="Task 4-3">
 </figure>
 
 ```sql
@@ -138,8 +138,8 @@ SELECT AVG(follower_count) FROM website.member;
  ```
 
  <figure>
-    <img src="./screenshots/task4-4.png" width="500" alt="Task 4-4">
     <figcaption>Task 4-4 Screenshot</figcaption>
+    <img src="./screenshots/task4-4.png" width="500" alt="Task 4-4">
 </figure>
 
 ### Task 5: SQL JOIN
@@ -156,8 +156,8 @@ CREATE TABLE website.message (
 ```
 
 <figure>
-    <img src="./screenshots/task5-1.png" width="500" alt="Task 5-1">
     <figcaption>Task 5-1 Screenshot</figcaption>
+    <img src="./screenshots/task5-1.png" width="500" alt="Task 5-1">
 </figure>
 
 ```sql
@@ -167,13 +167,13 @@ JOIN website.member ON message.member_id = member.id;
 ```
 
 <figure>
-    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
     <figcaption>Task 5-2-1 Screenshot</figcaption>
+    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
 </figure>
 
 <figure>
-    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
     <figcaption>Task 5-2-2 Screenshot</figcaption>
+    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
 </figure>
 
 ```sql
@@ -184,9 +184,8 @@ WHERE member.username = 'test';
 ```
 
 <figure>
+   <figcaption>Task 5-3 Screenshot</figcaption>   
     <img src="./screenshots/task5-3.png" width="500" alt="Task 5-3">
-    <figcaption>Task 5-3 Screenshot</figcaption>
-</figure>
 
 ```sql
 SELECT AVG(message.like_count) FROM website.message
@@ -206,6 +205,6 @@ GROUP BY member.username;
 ```
 
 <figure>
-    <img src="./screenshots/task5-5.png" width="500" alt="Task 5-5">
     <figcaption>Task 5-5 Screenshot</figcaption>
+    <img src="./screenshots/task5-5.png" width="500" alt="Task 5-5">
 </figure>
