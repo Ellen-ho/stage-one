@@ -195,8 +195,8 @@ WHERE member.username = 'test';
 ```
 
 <figure>
+<figcaption>Task 5-4 Screenshot</figcaption>
     <img src="./screenshots/task5-4.png" width="500" alt="Task 5-4">
-    <figcaption>Task 5-4 Screenshot</figcaption>
 </figure>
 
 ```sql
