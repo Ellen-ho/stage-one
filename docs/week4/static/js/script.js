@@ -19,7 +19,7 @@ function addCalculateFormEventListener() {
         if (!isNaN(number) && number > 0) {
             window.location.href = `/square/${number}`; 
         } else {
-            alert("Please enter a positive number");
+            alert('Please enter a positive number');
         }
     })
 }

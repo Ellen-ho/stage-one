@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>square</title>
-    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-    <nav class="fixed-top-navbar">
-        <div class="navbar-content">正整數平方計算結果</div>
-    </nav>
-    <div>
-    <div class="calculate-result">{{result}}</div>
-   </div>
- </body>
-</html>
+{% extends "main.html" %}
+
+{% block title %}Member Page{% endblock %}
+
+{% block navbar %}
+    正整數平方計算结果
+{% endblock %}
+
+{% block content %}
+<div class="calculate-result">{{result}}</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

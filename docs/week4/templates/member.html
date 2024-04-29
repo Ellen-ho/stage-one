@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>success</title>
-    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-    <nav class="fixed-top-navbar">
-        <div class="navbar-content">歡迎光臨，這是會員頁</div>
-    </nav>
-    <div id="content"> 
-        <div class="success-message">恭喜您，成功登入系統</div>
-        <a href="/signout" class="signout-link">登出系統</a>
-    </div>
- </body>
-</html>
+{% extends "main.html" %}
+
+{% block title %}Member Page{% endblock %}
+
+{% block navbar %}
+<div class="navbar-content">歡迎光臨，這是會員頁</div>
+{% endblock %}
+
+{% block content %}
+<div class="success-message">恭喜您，成功登入系統</div>
+<a href="/signout" class="signout-link">登出系統</a>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
