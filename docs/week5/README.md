@@ -168,12 +168,12 @@ JOIN website.member ON message.member_id = member.id;
 
 <figure>
     <figcaption>Task 5-2-1 Screenshot</figcaption>
-    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
+    <img src="./screenshots/task5-2-1.png" width="500" alt="Task 5-2-1">
 </figure>
 
 <figure>
     <figcaption>Task 5-2-2 Screenshot</figcaption>
-    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
+    <img src="./screenshots/task5-2-2.png" width="500" alt="Task 5-2-2">
 </figure>
 
 ```sql
