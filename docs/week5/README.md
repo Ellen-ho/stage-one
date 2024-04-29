@@ -4,6 +4,11 @@
 CREATE DATABASE website;
 ```
 
+<figure>
+    <img src="./screenshots/task2-1.png" width="500" alt="Task 2-2">
+    <figcaption>Task 2-1 Screenshot</figcaption>
+</figure>
+
 ```sql
 CREATE TABLE website.member (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -29,37 +34,75 @@ INSERT INTO website.member (name, username, password,  follower_count) VALUES ('
 INSERT INTO website.member (name, username, password, follower_count) VALUES ('Danny', 'danny000', 'dannySecret000', 4);
 ```
 
+<figure>
+    <img src="./screenshots/task3-1.png" width="500" alt="Task 3-1">
+    <figcaption>Task 3-1 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT * FROM website.member;
 ```
+
+<figure>
+    <img src="./screenshots/task3-2.png" width="500" alt="Task 3-2">
+    <figcaption>Task 3-2 Screenshot</figcaption>
+</figure>
 
 ```sql
 SELECT * FROM website.member ORDER BY time DESC;
 ```
 
+<figure>
+    <img src="./screenshots/task3-3.png" width="500" alt="Task 3-3">
+    <figcaption>Task 3-3 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT * FROM website.member ORDER BY time DESC LIMIT 3 OFFSET 1;
 ```
 
+<figure>
+    <img src="./screenshots/task3-4.png" width="500" alt="Task 3-4">
+    <figcaption>Task 3-4 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT * FROM website.member WHERE username = 'test';
 ```
+
+<figure>
+    <img src="./screenshots/task3-5.png" width="500" alt="Task 3-5">
+    <figcaption>Task 3-5 Screenshot</figcaption>
+</figure>
 
 ```sql
 SELECT * FROM website.member WHERE name LIKE '%es%';
 ```
 
+<figure>
+    <img src="./screenshots/task3-6.png" width="500" alt="Task 3-6">
+    <figcaption>Task 3-6 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT * FROM website.member WHERE username = 'test' AND password = 'test';
 ```
 
-```sql
-UPDATE website.member SET name = 'test2' WHERE username = 'test';
-```
+<figure>
+    <img src="./screenshots/task3-7.png" width="500" alt="Task 3-7">
+    <figcaption>Task 3-7 Screenshot</figcaption>
+</figure>
 
 ```sql
+UPDATE website.member SET name = 'test2' WHERE username = 'test';
+
 SELECT * FROM website.member WHERE username = 'test';
 ```
+
+<figure>
+    <img src="./screenshots/task3-8.png" width="500" alt="Task 3-8">
+    <figcaption>Task 3-8 Screenshot</figcaption>
+</figure>
 
 ### Task 4: SQL Aggregation Functions
 
@@ -67,17 +110,37 @@ SELECT * FROM website.member WHERE username = 'test';
 SELECT COUNT(*) FROM website.member;
 ```
 
+<figure>
+    <img src="./screenshots/task4-1.png" width="500" alt="Task 4-1">
+    <figcaption>Task 4-1 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT SUM(follower_count) FROM website.member;
 ```
+
+<figure>
+    <img src="./screenshots/task4-2.png" width="500" alt="Task 4-2">
+    <figcaption>Task 4-2 Screenshot</figcaption>
+</figure>
 
 ```sql
 SELECT AVG(follower_count) FROM website.member;
 ```
 
+<figure>
+    <img src="./screenshots/task4-3.png" width="500" alt="Task 4-3">
+    <figcaption>Task 4-3 Screenshot</figcaption>
+</figure>
+
 ```sql
  SELECT AVG(follower_count)  FROM (SELECT follower_count FROM website.member ORDER BY follower_count DESC LIMIT 2) AS top_two_average_followers;
  ```
+
+ <figure>
+    <img src="./screenshots/task4-4.png" width="500" alt="Task 4-4">
+    <figcaption>Task 4-4 Screenshot</figcaption>
+</figure>
 
 ### Task 5: SQL JOIN
 
@@ -92,11 +155,26 @@ CREATE TABLE website.message (
     );
 ```
 
+<figure>
+    <img src="./screenshots/task5-1.png" width="500" alt="Task 5-1">
+    <figcaption>Task 5-1 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT message.id, member.name AS sender_name, message.content, message.like_count, message.time
 FROM website.message
 JOIN website.member ON message.member_id = member.id;
 ```
+
+<figure>
+    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
+    <figcaption>Task 5-2-1 Screenshot</figcaption>
+</figure>
+
+<figure>
+    <img src="./screenshots/task5-2.png" width="500" alt="Task 5-2">
+    <figcaption>Task 5-2-2 Screenshot</figcaption>
+</figure>
 
 ```sql
 SELECT message.id, member.name AS sender_name, message.content, message.like_count, message.time
@@ -104,6 +182,11 @@ FROM website.message
 JOIN website.member ON message.member_id = member.id
 WHERE member.username = 'test';
 ```
+
+<figure>
+    <img src="./screenshots/task5-3.png" width="500" alt="Task 5-3">
+    <figcaption>Task 5-3 Screenshot</figcaption>
+</figure>
 
 ```sql
 SELECT AVG(message.like_count) FROM website.message
@@ -111,8 +194,18 @@ JOIN website.member ON message.member_id = member.id
 WHERE member.username = 'test';
 ```
 
+<figure>
+    <img src="./screenshots/task5-4.png" width="500" alt="Task 5-4">
+    <figcaption>Task 5-4 Screenshot</figcaption>
+</figure>
+
 ```sql
 SELECT member.username, AVG(message.like_count) FROM website.message
 JOIN website.member ON message.member_id = member.id
 GROUP BY member.username;
 ```
+
+<figure>
+    <img src="./screenshots/task5-5.png" width="500" alt="Task 5-5">
+    <figcaption>Task 5-5 Screenshot</figcaption>
+</figure>
