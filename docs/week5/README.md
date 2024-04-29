@@ -5,8 +5,8 @@ CREATE DATABASE website;
 ```
 
 <figure>
-    <img src="./screenshots/task2-1.png" width="500" alt="Task 2-2">
     <figcaption>Task 2-1 Screenshot</figcaption>
+    <img src="./screenshots/task2-1.png" width="500" alt="Task 2-1">
 </figure>
 
 ```sql
@@ -20,8 +20,8 @@ CREATE TABLE website.member (
 );
 ```
 <figure>
-    <img src="./screenshots/task2-2.png" width="500" alt="Task 2-2">
     <figcaption>Task 2-2 Screenshot</figcaption>
+    <img src="./screenshots/task2-2.png" width="500" alt="Task 2-2">
 </figure>
 
 ### Task 3: SQL CRUD
