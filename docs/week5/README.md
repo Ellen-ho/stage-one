@@ -14,7 +14,7 @@ CREATE TABLE website.member (
     time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 ```
-![Task 2-2](./screenshots/task2-2.png)
+![Task 2-2]<img src="./screenshots/task2-2.png" width="500" alt="Task 2-2">
 
 ### Task 3: SQL CRUD
 
