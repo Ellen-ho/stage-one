@@ -30,7 +30,7 @@ CREATE TABLE website.member (
 INSERT INTO website.member (name, username, password) VALUES ('test', 'test', 'test');
 INSERT INTO website.member (name, username, password, follower_count) VALUES ('Mary', 'mary123', 'marySecret123', 1);
 INSERT INTO website.member (name, username, password, follower_count) VALUES ('Bob', 'bob456', 'bobSecret456', 2);
-INSERT INTO website.member (name, username, password,  follower_count) VALUES ('Amy', 'amy789', 'amySecret789', 3);
+INSERT INTO website.member (name, username, password, follower_count) VALUES ('Amy', 'amy789', 'amySecret789', 3);
 INSERT INTO website.member (name, username, password, follower_count) VALUES ('Danny', 'danny000', 'dannySecret000', 4);
 ```
 
