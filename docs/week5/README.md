@@ -24,7 +24,7 @@ CREATE TABLE website.member (
     <img src="./screenshots/task2-2.png" width="500" alt="Task 2-2">
 </figure>
 
-### Task 3: SQL CRUD
+## Task 3: SQL CRUD
 
 ```sql
 INSERT INTO website.member (name, username, password) VALUES ('test', 'test', 'test');
@@ -104,7 +104,7 @@ SELECT * FROM website.member WHERE username = 'test';
     <img src="./screenshots/task3-8.png" width="500" alt="Task 3-8">
 </figure>
 
-### Task 4: SQL Aggregation Functions
+## Task 4: SQL Aggregation Functions
 
 ```sql
 SELECT COUNT(*) FROM website.member;
@@ -142,7 +142,7 @@ SELECT AVG(follower_count) FROM website.member;
     <img src="./screenshots/task4-4.png" width="500" alt="Task 4-4">
 </figure>
 
-### Task 5: SQL JOIN
+## Task 5: SQL JOIN
 
 ```sql
 CREATE TABLE website.message (
