@@ -134,7 +134,7 @@ SELECT AVG(follower_count) FROM website.member;
 </figure>
 
 ```sql
- SELECT AVG(follower_count)  FROM (SELECT follower_count FROM website.member ORDER BY follower_count DESC LIMIT 2) AS top_two_average_followers;
+ SELECT AVG(follower_count) FROM (SELECT follower_count FROM website.member ORDER BY follower_count DESC LIMIT 2) AS top_two_average_followers;
  ```
 
  <figure>
