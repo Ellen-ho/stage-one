@@ -8,7 +8,6 @@ function addSignInFormEventListener() {
             event.preventDefault();
         }
     };
-
 }
 
 function addCalculateFormEventListener() {
