@@ -38,11 +38,8 @@ def create_user(name, username, password):
             return None, "Repeated username"
 
         hashed_password = pwd_context.hash(password)
-        query = (
-            "INSERT INTO member (name, username, password) "
-            f"VALUES ('{name}', '{username}', '{hashed_password}');"
-        )
-        cursor.execute(query)
+        query = "INSERT INTO member (name, username, password) VALUES (%s, %s, %s);"
+        cursor.execute(query, (name, username, hashed_password))
         connection.commit()
         return "User created successfully.", None
     except Error as e:
@@ -117,8 +114,7 @@ async def create_message_in_db(member_id: int, content: str):
     try:
         cursor = connection.cursor(dictionary=True)
         query = "INSERT INTO message (member_id, content, time) VALUES (%s, %s, CURRENT_TIMESTAMP)"
-        values = (member_id, content) 
-        cursor.execute(query, values)
+        cursor.execute(query, (member_id, content))
         connection.commit()
         return "Message created successfully.", None
     except Error as e:
