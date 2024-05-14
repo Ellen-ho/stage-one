@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet" >
+</head>
+
+<body>
+    <nav class="fixed-top-navbar">
+        <span>{% block navbar %}{% endblock %}</span>
+    </nav>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>

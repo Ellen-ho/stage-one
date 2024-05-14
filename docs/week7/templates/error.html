@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block title %}Error Page{% endblock %}
+
+{% block navbar %}
+<div class="navbar-content">失敗頁面</div>
+{% endblock %}
+
+{% block content %}
+<div></div>
+<div class="failure-message">{{ message }}</div>
+<a href="/" class="back">返回首頁</a>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

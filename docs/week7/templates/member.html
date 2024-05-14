@@ -1,0 +1,91 @@
+{% extends "main.html" %}
+
+{% block title %}Member Page{% endblock %}
+
+{% block navbar %}
+<div class="navbar-content">歡迎光臨，這是會員頁</div>
+{% endblock %}
+
+{% block content %}
+<div class="success-message"><span id="member-name">{{ name }}</span>，歡迎登入系統</div>
+<a href="/signout" class="signout-link">登出系統</a>
+<hr>
+<div class="container">
+    <div class="input-title">查詢會員姓名</div>
+    <div id="search-member-container">
+        <input type="text" id="search-member-content" class="input-content" name="search-member-content">
+        <button id="search-member-button">查詢</button>
+    </div>
+    <div id="member-info"></div>
+</div>
+<div class="container">
+    <div class="input-title">更新我的姓名</div>
+    <div id="update-name-container">
+        <input type="text" id="update-name-content" class="input-content" name="update-name-content">
+        <button id="update-name-button">更新</button>
+    </div>
+    <div id="update-status"></div>
+</div>
+<hr>
+<div class="container">
+    <div class="input-title">快來留言吧</div>
+    <div id="create-message-container">
+        <label for="create-message-content">內容</label>
+        <input type="text" id="create-message-content" class="input-content" name="create-message-content">
+        <button id="create-message-button">送出</button>
+    </div>
+</div>
+<hr>
+<div id="messages-list">
+{% for message in messages %}
+    <div id="message-{{ message.id }}">
+        <strong>{{ message.member_name }}</strong>: 
+        <span class="message-content">{{ message.content }}</span>
+        <input type="text" class="edit-input" value="{{ message.content }}" style="display: none;">
+        {% if message.member_id == request.session.get('member_id') %}
+        <button class="edit-button" data-message-id="{{ message.id }}">編輯</button>
+        <button class="save-button" data-message-id="{{ message.id }}" style="display: none;">儲存</button>
+        <button class="cancel-button" data-message-id="{{ message.id }}" style="display: none;">取消</button>
+        <button class="delete-button" data-message-id="{{ message.id }}">X</button>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+<div aria-label="Page navigation">
+    <ul class="pagination">
+        {% set pages_per_group = 3 %}
+        {% set current_group = ((current_page - 1) // pages_per_group) + 1 %}
+        {% set start_page = (current_group - 1) * pages_per_group + 1 %}
+        {% set end_page = start_page + pages_per_group - 1 %}
+        {% if end_page > total_pages %}
+            {% set end_page = total_pages %}
+        {% endif %}
+
+        {% if current_group > 1 %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ start_page - 1 }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% for i in range(start_page, end_page + 1) %}
+        <li class="page-item {% if i == current_page %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endfor %}
+
+        {% if end_page < total_pages %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ end_page + 1 }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='/js/member.js') }}"></script>
+{% endblock %}

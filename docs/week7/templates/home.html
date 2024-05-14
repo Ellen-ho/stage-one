@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block navbar %}
+   歡迎光臨，請註冊登入系統
+{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <div class="form-title">註冊帳號</div>
+        <form id="signup-form" action="/signup" method="POST">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div>
+                <label for="signup-username">帳號</label>
+                <input type="text" id="signup-username" name="username">
+            </div>
+            <div>
+                <label for="signup-password">密碼</label>
+                <input type="password" id="signup-password" name="password">
+            </div>
+            <div>
+                <button type="submit">註冊</button>
+            </div>
+        </form>  
+    </div>
+    <hr>
+    <div class="form-container">
+        <div class="form-title">登入系統</div>
+        <form id="signin-form" action="/signin" method="POST">
+            <div>
+                <label for="signin-username">帳號</label>
+                <input type="text" id="signin-username" name="username">
+            </div>
+            <div>
+                <label for="signin-password">密碼</label>
+                <input type="password" id="signin-password" name="password">
+            </div>
+            <div>
+                <button type="submit">登入</button>
+            </div>
+        </form>  
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='/js/home.js') }}"></script>
+{% endblock %}
