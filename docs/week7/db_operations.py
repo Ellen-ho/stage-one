@@ -10,7 +10,7 @@ def check_username_exists(username):
     if connection is None:
         print("Failed to connect to the database")
         return False
-    
+
     try:
         cursor = connection.cursor()
         query = "SELECT * FROM member WHERE username = %s"
@@ -129,9 +129,8 @@ async def update_member_name(member_id, new_name):
         cursor.execute(query, (new_name, member_id))
         connection.commit()
         return "Member name updated successfully.", None
-    except Exception as e:
-        print(e)
-        return False
+    except Error as e:
+        return None, f"Database error: {str(e)}"
     finally:
         cursor.close()
         connection.close()
@@ -142,14 +141,13 @@ async def create_message_in_db(member_id: int, content: str):
     connection = create_server_connection()
     if connection is None:
         return None, "Failed to connect to the database"
+
     try:
         cursor = connection.cursor(dictionary=True)
         query = "INSERT INTO message (member_id, content, time) VALUES (%s, %s, CURRENT_TIMESTAMP)"
         cursor.execute(query, (member_id, content))
         connection.commit()
-        message_id = cursor.lastrowid
-        member_name = await find_member_name_by_id(member_id)
-        return {"id": message_id, "content": content, "member_name": member_name}
+        return "Message created successfully.", None
     except Error as e:
         connection.rollback() 
         return None, f"Database error: {str(e)}"
@@ -157,7 +155,8 @@ async def create_message_in_db(member_id: int, content: str):
         cursor.close()
         connection.close()
 
-async def get_messages(page=1, limit=10):
+
+async def get_messages(page: int = 1, limit: int = 10):
     connection = create_server_connection()
     if connection is None:
         return None, "Failed to connect to the database"
@@ -169,12 +168,9 @@ async def get_messages(page=1, limit=10):
         JOIN member ON message.member_id = member.id
         ORDER BY message.time DESC
         """
-        if page is not None and limit is not None:
-            offset = (page - 1) * limit
-            query += " LIMIT %s OFFSET %s"
-            cursor.execute(query, (limit, offset))
-        else:
-            cursor.execute(query)
+        offset = (page - 1) * limit
+        query += " LIMIT %s OFFSET %s"
+        cursor.execute(query, (limit, offset))
 
         messages = cursor.fetchall()
         cursor.execute("SELECT COUNT(*) AS total FROM message")
@@ -187,7 +183,7 @@ async def get_messages(page=1, limit=10):
         cursor.close()
         connection.close()
 
-async def delete_message(message_id, member_id):
+async def delete_message(message_id: int, member_id: int):
     connection = create_server_connection()
     if connection is None:
         return None, "Failed to connect to the database"
@@ -210,7 +206,7 @@ async def delete_message(message_id, member_id):
             cursor.close()
             connection.close()
 
-async def update_message_in_db(message_id, member_id, new_content):
+async def update_message_in_db(message_id: int, member_id: int, new_content: str):
     connection = create_server_connection()
     if connection is None:
         return None, "Failed to connect to the database"

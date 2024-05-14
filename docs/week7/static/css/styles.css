@@ -103,8 +103,7 @@ body {
 }
 
 #search-member-button,
-#update-name-button,
-#create-message-button{
+#update-name-button{
     padding: 5px 10px;
     cursor: pointer;
 }
@@ -128,7 +127,6 @@ body {
     height:25px
 }
 
-
 hr {
     border: none;  
     height: 1px;  
@@ -143,10 +141,6 @@ hr {
 
 .failure-message{
     margin-top: 10px;
-}
-
-.message form {
-    display: inline; 
 }
 
 .pagination {

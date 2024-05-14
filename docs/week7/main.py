@@ -10,7 +10,7 @@ import db_operations
 import urllib.parse
 from urllib.parse import quote
 from passlib.context import CryptContext
-from models import Member, MemberData, UpdateNameRequest, UpdateMessageRequest, DeleteMessageRequest, MessageContent, Message
+from models import UpdateNameRequest, UpdateMessageRequest, DeleteMessageRequest
 
 load_dotenv()
 
@@ -45,9 +45,7 @@ async def signin(request: Request, username: str = Form(None), password: str = F
     user, error = db_operations.verify_user(username, password)
     if error:
         return RedirectResponse(url=f"/error?message={quote(error)}", status_code=303)
-    
     request.session['member_id'] = user['id']
-    print(request.session['member_id'])
     return RedirectResponse(url="/member", status_code=303)
 
 @app.get("/member")
@@ -66,7 +64,7 @@ async def member(request: Request):
         "current_page": page
     })
 
-@app.get("/api/member", response_model=MemberData)
+@app.get("/api/member")
 async def search_member(request: Request, username: str = Query(..., alias="username")):
     member_id = request.session.get("member_id")
     if not member_id:
@@ -77,39 +75,34 @@ async def search_member(request: Request, username: str = Query(..., alias="user
     else:
         return JSONResponse(content={"data": None})
 
-@app.patch("/api/member", response_model=dict)
+@app.patch("/api/member")
 async def update_member_name(request: Request, name_data: UpdateNameRequest):
     member_id = request.session.get("member_id")
     if not member_id:
         return JSONResponse(content={"error": True}, status_code=status.HTTP_401_UNAUTHORIZED)
-    result = await db_operations.update_member_name(member_id, name_data.name)
-    if result:
+    try:
+        await db_operations.update_member_name(member_id, name_data.name)
         return {"ok": True}
-    else:
-        return JSONResponse(content={"error": True}, status_code=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/error")
 async def error_page(request: Request, message: str = ""):
     return templates.TemplateResponse("error.html", {"request": request, "message": message})
 
-@app.post("/api/createMessage")
-async def create_message(request: Request, message: MessageContent):
+@app.post("/createMessage")
+async def create_message(request: Request, content: str = Form(..., alias='message-content')):
     member_id = request.session.get('member_id')
     if not member_id:
-        return JSONResponse(content={"error": True}, status_code=status.HTTP_401_UNAUTHORIZED)
-
-    result = await db_operations.create_message_in_db(member_id, message.content)
-    if result:
-        return JSONResponse(content={"data": result})
-    else:
-        return JSONResponse(content={"data": None})
+        return templates.TemplateResponse("error.html", {"request": request, "message": "User authentication failed"})
+    await db_operations.create_message_in_db(member_id, content)
+    return RedirectResponse(url="/member", status_code=303)
 
 @app.post("/api/deleteMessage")
 async def delete_message(request: Request, delete_request: DeleteMessageRequest):
     member_id = request.session.get("member_id")
     if not member_id:
         return JSONResponse(content={"error": True}, status_code=status.HTTP_401_UNAUTHORIZED)
-
     try:
         await db_operations.delete_message(delete_request.message_id, member_id)
         return {"ok": True}
@@ -121,7 +114,6 @@ async def update_message(request: Request, message: UpdateMessageRequest):
     member_id = request.session.get("member_id")
     if not member_id:
         return JSONResponse(content={"error": True}, status_code=status.HTTP_401_UNAUTHORIZED)
-    
     try:
         await db_operations.update_message_in_db(message.message_id, member_id, message.new_content)
         return {"ok": True}

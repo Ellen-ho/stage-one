@@ -21,19 +21,23 @@
 <div class="container">
     <div class="input-title">更新我的姓名</div>
     <div id="update-name-container">
-        <input type="text" id="update-name-content" class="input-content" name="update-name-content">
+        <input type="text" id="update-name-content" class="input-content" name="update-name-content" placeholder="輸入新的姓名">
         <button id="update-name-button">更新</button>
     </div>
     <div id="update-status"></div>
 </div>
 <hr>
-<div class="container">
-    <div class="input-title">快來留言吧</div>
-    <div id="create-message-container">
-        <label for="create-message-content">內容</label>
-        <input type="text" id="create-message-content" class="input-content" name="create-message-content">
-        <button id="create-message-button">送出</button>
-    </div>
+<div class="form-container">
+    <div class="form-title">快來留言吧</div>
+    <form id="message-form" action="/createMessage" method="POST">
+        <div>
+            <label for="message-content">內容</label>
+            <input type="text" id="message-content" name="message-content">
+            <div>
+                <button type="submit">送出</button>
+            </div>
+        </div>
+    </form>
 </div>
 <hr>
 <div id="messages-list">
@@ -71,7 +75,11 @@
 
         {% for i in range(start_page, end_page + 1) %}
         <li class="page-item {% if i == current_page %}active{% endif %}">
-            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            {% if i == 1 %}
+            <a class="page-link" href="/member">{{ i }}</a> 
+            {% else %}
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a> 
+            {% endif %}
         </li>
         {% endfor %}
 
