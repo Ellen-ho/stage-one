@@ -63,9 +63,11 @@ function addUpdateMemberNameEventListener() {
         })
         .then(data => {
             if (data.ok) {
-                const memberName = document.getElementById('member-name');
+                const memberNames = document.getElementsByClassName('member-name');
                 const updateStatusDiv = document.getElementById('update-status');
-                memberName.innerText = newName;
+                Array.from(memberNames).forEach(element => {
+                    element.innerText = newName;
+                });
                 updateStatusDiv.innerText = '更新成功！';
                 newNameInput.value = '';
             } else {

@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="success-message"><span id="member-name">{{ name }}</span>，歡迎登入系統</div>
+<div class="success-message"><span class="member-name">{{ name }}</span>，歡迎登入系統</div>
 <a href="/signout" class="signout-link">登出系統</a>
 <hr>
 <div class="container">
@@ -43,7 +43,13 @@
 <div id="messages-list">
 {% for message in messages %}
     <div id="message-{{ message.id }}">
-        <strong>{{ message.member_name }}</strong>: 
+        <strong>
+            {% if message.member_id == request.session.get('member_id') %}
+                <span class="member-name">{{ message.member_name }}</span>
+            {% else %}
+                {{ message.member_name }}
+            {% endif %}
+        </strong>: 
         <span class="message-content">{{ message.content }}</span>
         <input type="text" class="edit-input" value="{{ message.content }}" style="display: none;">
         {% if message.member_id == request.session.get('member_id') %}
